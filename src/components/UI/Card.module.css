@@ -1,0 +1,6 @@
+.Card{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: aliceblue;
+}
