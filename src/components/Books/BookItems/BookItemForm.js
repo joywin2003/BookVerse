@@ -1,9 +1,10 @@
+
 import { useRef, useState } from 'react';
 
 import Input from '../../UI/Input';
-import classes from './MealItemForm.module.css';
+import classes from './BookItemForm.module.css';
 
-const MealItemForm = (props) => {
+const BookItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
@@ -45,4 +46,4 @@ const MealItemForm = (props) => {
   );
 };
 
-export default MealItemForm;
+export default BookItemForm;

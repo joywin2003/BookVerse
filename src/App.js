@@ -1,5 +1,5 @@
 import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meal";
+import Books from "./components/Books/Book";
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
 import CartProvider from "./store/CartProvider";
@@ -17,7 +17,7 @@ function App() {
    {cartIsShown && <Cart onHideCartHandler={hideCartHandler}/>}
       <Header showCartHandler={showCartHandler} hideCartHandler = {hideCartHandler}/>
       <main>
-        <Meals />
+        <Books />
       </main>
     </CartProvider>
   );

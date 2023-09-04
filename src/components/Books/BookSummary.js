@@ -1,6 +1,6 @@
-import classes from './MealSummary.module.css'
+import classes from './BookSummary.module.css'
 
-const MealSummary = () => {
+const BookSummary = () => {
     return (
         <section className={classes.summary}>
             <h2>Explore and Discover Great Reads Online</h2>
@@ -18,4 +18,4 @@ const MealSummary = () => {
     
 }
 
-export default MealSummary;
+export default BookSummary;
