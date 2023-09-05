@@ -3,6 +3,7 @@ import Books from "./components/Books/Book";
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
 import CartProvider from "./store/CartProvider";
+import HeaderSearch from "./components/UI/SearchBar/HeaderSearch";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);

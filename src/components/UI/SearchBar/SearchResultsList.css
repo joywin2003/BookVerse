@@ -1,0 +1,12 @@
+.search-results{
+    background-color: white;
+    width: 70%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    max-height: 200px;
+    overflow-y: scroll;
+}

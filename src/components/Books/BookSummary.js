@@ -1,4 +1,5 @@
 import classes from './BookSummary.module.css'
+import HeaderSearch from '../UI/SearchBar/HeaderSearch';
 
 const BookSummary = () => {
     return (
@@ -13,6 +14,7 @@ const BookSummary = () => {
                 of genres and topics, ensuring you find the perfect book to enrich your
                 reading experience.
             </p>
+            <div className={classes.search}><HeaderSearch/></div>
         </section>
     );
     
