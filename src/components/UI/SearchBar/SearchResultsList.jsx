@@ -8,13 +8,13 @@ const SearchResultsList = ({ books, onSelectHandler }) => {
   }
   console.log(books["books"][0][1]);
   return (
-    <>
+    <div className="parent-div">
         <div className="search-results">
           {books["books"].map((book, index) => (
             <div onClick = {() => onSelectHandler(book[1])} key={index}>{book[1]}</div>
           ))}
         </div>
-    </>
+    </div>
   );
 };
 
