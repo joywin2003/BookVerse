@@ -6,12 +6,12 @@ const BookItems = (props) => {
   const price = `$${props.price.toFixed(2)}`;
   const cartctx = useContext(CartContext);
   const addToCartHandler = (amount) => {
-    // cartctx.addItems({
-    //   id: props.book.id,
-    //   name: props.book.title,
-    //   amount: amount,
-    //   price: props.book.price
-    // })
+   cartctx.addItems({
+      id: props.id,
+      title: props.title,
+      amount: amount,
+      price: props.price,
+    })
   }
   return (
     <li className={classes.meal}>

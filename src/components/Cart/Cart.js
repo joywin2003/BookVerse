@@ -22,7 +22,7 @@ const Cart = (props) => {
       {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
-          name={item.name}
+          title={item.title}
           amount={item.amount}
           price={item.price}
           onAdd={cartItemAddHandler.bind(null,item)}
