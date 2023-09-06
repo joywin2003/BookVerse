@@ -3,6 +3,8 @@
     width: 90%;
     margin: 2rem auto;
     animation: meals-appear 1s ease-out forwards;
+    /* max-height: 100vh;
+    overflow-y: scroll; */
   }
   
   .meals ul {
@@ -21,4 +23,11 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  .buttonContainer{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
