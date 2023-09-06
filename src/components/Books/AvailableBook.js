@@ -1,13 +1,15 @@
 import classes from "./AvailableBook.module.css";
 import Card from "../UI/Card";
 import BookItems from "./BookItems/BookItems";
-import { useEffect, useState } from "react";
+import CartContext from "../../store/cart-context";
+import { useEffect, useState,useContext } from "react";
 
 const AvailableBook = () => {
-  const [availableBooks, setAvailableBooks] = useState([]);
+  // const [availableBooks, setAvailableBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
+  const value = useContext(CartContext)
+  const {availableBooks, setAvailableBooks} = value
   const fetchBooks = async () => {
     setIsLoading(true);
     setIsError(false);
@@ -43,10 +45,21 @@ const AvailableBook = () => {
   const BookList = availableBooks.map((book) => (
     <BookItems key={book.id} title = {book.title} author = {book.author} genre = {book.genre} price = {book.price} />
   ));
+
+  let content = <p>Found no Books.</p>;
+  if(availableBooks.length > 0){
+      content = <ul>{BookList}</ul>;
+  }
+  if(isLoading){
+    content = <p>Loading...</p>;
+  }
+  if(isError){
+    content = <h3>{isError}</h3>;
+  }
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>{BookList}</ul>
+        {content}
       </Card>
     </section>
   );
