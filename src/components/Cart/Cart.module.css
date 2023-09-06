@@ -1,8 +1,12 @@
+.cart{
+  overflow-y: scroll;
+}
+
 .cart-items {
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 50rem;
+  max-height: 30rem;
   overflow: auto;
 }
 

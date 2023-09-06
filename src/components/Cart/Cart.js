@@ -30,6 +30,7 @@ const Cart = (props) => {
     </ul>
   );
   return (
+    <div className={classes.cart}>
     <Modal onClose={props.onHideCartHandler}>
       {cartItems}
       <div className={classes.total}>
@@ -46,6 +47,7 @@ const Cart = (props) => {
         {hasItems && <button className={classes.button}>Order</button>}
       </div>
     </Modal>
+    </div>
   );
 };
 

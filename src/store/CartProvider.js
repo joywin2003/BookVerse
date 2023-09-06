@@ -90,7 +90,6 @@ const CartProvider = (props) => {
             amount,
           };
         });
-  
         for (const cartItem of cartItems) {
           dispatchCartAction({ type: 'ADD', item: cartItem });
         }
