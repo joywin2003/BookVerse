@@ -11,9 +11,14 @@ const HeaderSearch = () => {
   const onSelectHandler = (BookTitle) => {
     setInput(BookTitle);
   };
-  const onSearchHandler = () => {
+  const onSearchHandler = (enteredValue) => {
     try {
-      const newbooks = books["books"].map((book) => {
+      const filteredBooks = books["books"].filter((book) => {
+        const [id, title, author, genre, price] = book;
+        return title.toLowerCase().includes(enteredValue.toLowerCase());
+      });
+  
+      const filteredBooksWithStructure = filteredBooks.map((book) => {
         const [id, title, author, genre, price] = book;
         return {
           id,
@@ -23,7 +28,8 @@ const HeaderSearch = () => {
           price,
         };
       });
-      setAvailableBooks(newbooks);
+  
+      setAvailableBooks(filteredBooksWithStructure);
     } catch (e) {
       console.log(e);
     }

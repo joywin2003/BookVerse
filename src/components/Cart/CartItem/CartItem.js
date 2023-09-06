@@ -2,7 +2,6 @@ import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
   const price = `$${props.price}`;
-
   return (
     <li className={classes['cart-item']}>
       <div>

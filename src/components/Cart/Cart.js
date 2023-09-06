@@ -6,9 +6,7 @@ import CartItem from "./CartItem/CartItem";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
-  console.log(cartCtx);
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-
   const cartItemAddHandler = (item) => {
     cartCtx.addItems({...item, amount: 1});
   };
@@ -19,7 +17,7 @@ const Cart = (props) => {
   const hasItems = cartCtx.items.length > 0;
   const cartItems = (
     <ul className={classes["cart-items"]}>
-      {cartCtx.items.map((item) => (
+      {cartCtx.items.map((item,index) => (
         <CartItem
           key={item.id}
           title={item.title}
@@ -31,7 +29,6 @@ const Cart = (props) => {
       ))}
     </ul>
   );
-
   return (
     <Modal onClose={props.onHideCartHandler}>
       {cartItems}

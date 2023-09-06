@@ -22,17 +22,17 @@ const SearchBar = ({ setBooks, input, setInput, onSearchHandler }) => {
     if (value) {
       fetchbooks(value);
     }
-  };
+  }; 
   return (
     <div className="input-wrapper">
-      <FaSearch id="search-icon" />
+     <FaSearch id="search-icon"/>
       <input
         placeholder="Type to search"
         value={input}
         onChange={(e) => handlefetch(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            onSearchHandler(); // Call the onSearchHandler function when Enter is pressed
+            onSearchHandler(e.target.value); // Call the onSearchHandler function when Enter is pressed
           }
         }}
       ></input>

@@ -30,8 +30,6 @@ const AvailableBook = () => {
           price
         };
       });
-
-      console.log(books);
       setAvailableBooks(books);
     } catch (error) {
       setIsError(error.message);
@@ -41,9 +39,9 @@ const AvailableBook = () => {
   };
   useEffect(() => {
     fetchBooks();
-  },[])
+  },[]);
   const BookList = availableBooks.map((book) => (
-    <BookItems key={book.id} title = {book.title} author = {book.author} genre = {book.genre} price = {book.price} />
+    <BookItems key={book.id} id = {book.id} title = {book.title} author = {book.author} genre = {book.genre} price = {book.price} />
   ));
 
   let content = <p>Found no Books.</p>;
