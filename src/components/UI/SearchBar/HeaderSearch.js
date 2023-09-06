@@ -25,7 +25,7 @@ const HeaderSearch = () => {
       });
       setAvailableBooks(newbooks);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
   return (
@@ -38,6 +38,7 @@ const HeaderSearch = () => {
           onSearchHandler={onSearchHandler}
         />
         <SearchResultsList
+          input={input}
           books={books}
           onSelectHandler={onSelectHandler}
           onSearchHandler={onSearchHandler}
