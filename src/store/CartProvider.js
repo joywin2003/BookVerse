@@ -8,6 +8,49 @@ const defaultCartState = {
   totalAmount: 0,
 };
 
+
+
+const addCartHandler = async (cartitem) => {
+  try {
+    const response = await fetch(
+      "http://127.0.0.1:8000/add_cart/",
+      {
+        method: "POST",
+        body: JSON.stringify(cartitem),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error adding item to cart.");
+    }
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
+
+const  deleteCartHandler = async(cartItemId) => {
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:8000/delete_cart/${cartItemId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error deleting item from cart.");
+    }
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+};
+
+
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     console.log("bingo");
@@ -26,10 +69,14 @@ const cartReducer = (state, action) => {
         ...existingCartItem,
         amount: existingCartItem.amount + action.item.amount,
       };
+
+
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
+      addCartHandler(updatedItem);
     } else {
       updatedItems = state.items.concat(action.item);
+      addCartHandler(action.item);
     }
 
     return {
@@ -51,6 +98,7 @@ const cartReducer = (state, action) => {
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     }
+    deleteCartHandler(action.id);
 
     return {
       items: updatedItems,
@@ -76,13 +124,12 @@ const CartProvider = (props) => {
       const data = await response.json();
       console.log(data);
   
-      // Check if data.cartitems exists before mapping it
       if (data.cartitems && Array.isArray(data.cartitems)) {
         const cartItems = data.cartitems.map((cartItem) => {
           const id = cartItem[0];
           const title = cartItem[1];
-          const price = cartItem[3];
-          const amount = cartItem[4];
+          const price = cartItem[2];
+          const amount = cartItem[3];
           return {
             id,
             title,
@@ -91,7 +138,8 @@ const CartProvider = (props) => {
           };
         });
         for (const cartItem of cartItems) {
-          dispatchCartAction({ type: 'ADD', item: cartItem });
+          if(cartItem.amount!=0)
+            dispatchCartAction({ type: 'ADD', item: cartItem });
         }
       } else {
         console.error("No cart items found in the response.");
@@ -104,7 +152,6 @@ const CartProvider = (props) => {
   useEffect(() => {
     fetchCartItems();
   }, []);
-  
   
 
   const addItemToCartHandler = (item) => {
