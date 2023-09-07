@@ -1,7 +1,6 @@
 import { useReducer, useState, useEffect } from "react";
 
 import CartContext from "./cart-context";
-import { act } from "react-dom/test-utils";
 
 const defaultCartState = {
   items: [],
@@ -138,7 +137,7 @@ const CartProvider = (props) => {
           };
         });
         for (const cartItem of cartItems) {
-          if(cartItem.amount!=0)
+          if(cartItem.amount!==0)
             dispatchCartAction({ type: 'ADD', item: cartItem });
         }
       } else {
